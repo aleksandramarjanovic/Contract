@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.cell.*?> 
+<?import javafx.collections.*?>
+<?import javafx.scene.text.*?>
+<?import main.*?> 
+
+
+<GridPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="main.UgovorKontroler" alignment="CENTER" hgap="5.0" vgap="5.0" >
+    <children>
+        <HBox alignment="TOP_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="0" >
+            <children>
+                <Button fx:id="closeBtn"  mnemonicParsing="false"  text="X" onAction="#closeForm" />
+            </children>
+        </HBox>
+       
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="0">
+            <children>
+                <Label text="Internet packages">
+                    <font>
+                        <Font size="30"/>
+                    </font>
+                    
+                </Label>
+            </children>
+        </VBox>
+        
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="2">
+            <children>
+                <Label text="Name:" />
+                <TextField   fx:id="ime"  promptText="Name..." GridPane.columnSpan="5"/>
+                <Label text="Surname:"  />
+                <TextField  fx:id="prezime"  promptText="Surname..." GridPane.columnSpan="5"/>
+                <Label text="Address:"  />
+                <TextField  fx:id="adresa"  promptText="Address..." GridPane.columnSpan="5"/>
+            </children>
+        </VBox>
+        
+        <HBox spacing="30.0" GridPane.columnIndex="0" GridPane.rowIndex="4">
+            <children>
+       
+                <Label text="Contract duration:" />
+                <RadioButton fx:id="jedna" text="1 year">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="trajanje"/>
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="dve" text="2 years" toggleGroup="$trajanje"/>
+             
+            </children>
+        </HBox>
+        
+        <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="6">
+            <children>
+                <Label text="Internet speed: "  />
+                <ToggleButton fx:id="2" text="2 Mbit"   >
+                    <toggleGroup>
+                        <ToggleGroup fx:id="brzina"/>
+                    </toggleGroup>
+                </ToggleButton>
+                <ToggleButton fx:id="5" text="5 Mbit"   toggleGroup="$brzina" />
+                <ToggleButton fx:id="10" text="10 Mbit"  toggleGroup="$brzina"/>
+                <ToggleButton fx:id="20" text="20 Mbit"   toggleGroup="$brzina" />
+                <ToggleButton fx:id="50" text="50 Mbit"  toggleGroup="$brzina" />
+                <ToggleButton fx:id="100" text="100 Mbit"  toggleGroup="$brzina"/>
+            </children>
+        </HBox>
+         
+        <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="8">
+            <children>
+                <Label text="Package amount : " />
+                <RadioButton fx:id="1GB" text="1 GB">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="protok"/>
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="5GB" text="5 GB" toggleGroup="$protok" />
+                <RadioButton fx:id="10GB" text="10 GB" toggleGroup="$protok" />
+                <RadioButton fx:id="100GB" text="100 GB" toggleGroup="$protok" />
+                <RadioButton fx:id="flat" text="Flat" toggleGroup="$protok"/>
+            </children>
+        </HBox>
+        
+        <HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="10">
+            <children>
+                <Button fx:id="saveBtn" text="Save" onAction="#sacuvajUgovor"/>
+                <Button fx:id="seeAll" text="Show contracts" onAction="#vratiUgovore"/>
+                   </children>
+         </HBox>
+                <HBox  alignment="BOTTOM_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                    <children>
+                <Button fx:id="delete" text="Delete contract" onAction="#obrisiUgovor"/>
+                    </children>
+                </HBox>
+         
+        
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="9"> 
+          
+            <TableView fx:id="tabela">
+                <columns>
+                     <TableColumn text="Id">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="id" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Name">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="ime" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Surname">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="prezime" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Address">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="adresa" />
+                        </cellValueFactory>                        
+                    </TableColumn>
+                    <TableColumn text="Contract duration">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="trajanje" />
+                        </cellValueFactory>                        
+                    </TableColumn>
+                       <TableColumn text="Internet speed">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="brzina" />
+                        </cellValueFactory>                        
+                    </TableColumn>
+                       <TableColumn text="Package amount">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="protok" />
+                        </cellValueFactory>                        
+                    </TableColumn>
+                </columns>
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                    </FXCollections>
+                </items>
+            </TableView>
+        </VBox>
+         
+    </children>
+    <padding>
+        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+    </padding>
+    
+</GridPane>
+

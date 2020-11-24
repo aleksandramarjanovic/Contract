@@ -1,0 +1,32 @@
+.root{
+   -fx-background-color:  darkseagreen;
+   -fx-border: black;
+   -fx-border-style: solid;
+
+   
+ 
+}
+.button{
+   -fx-font-style: italic;
+}
+#delete:pressed{
+    
+    -fx-background-color: black;
+    
+}
+#saveBtn:pressed{
+     -fx-background-color: pink; 
+
+}
+#saveBtn{
+       -fx-font-weight: bolder;
+       
+}
+.label{
+    -fx-font-style: italic;
+}
+
+
+
+
+
